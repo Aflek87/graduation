@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="744876157">
+    <data-source source="LOCAL" name="HSQLDB" uuid="8f498856-d0fc-45d9-8589-c4e2b36784df">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem:graduation</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - graduation@localhost" uuid="4e758088-2a28-4aff-abb1-a3cecc59aa2f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/graduation</jdbc-url>
+    </data-source>
+  </component>
+</project>
