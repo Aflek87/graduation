@@ -31,7 +31,7 @@ public class MenuRepositoryImplTest {
         crudRestoranRepository.save(restoran);
         Map<String, String> delishes = new HashMap();
         delishes.put("Мясо по французски", "100");
-        Menu menu = new Menu(null, crudRestoranRepository.save(restoran),LocalDate.of(2018, Month.MAY, 30), delishes);
+        Menu menu = new Menu(null, LocalDate.of(2018, Month.MAY, 30), delishes);
         crudMenuRepository.save(menu);
     }
 

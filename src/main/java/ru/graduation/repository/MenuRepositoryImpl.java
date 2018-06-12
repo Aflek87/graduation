@@ -25,7 +25,7 @@ public class MenuRepositoryImpl implements MenuRepository {
 
     @Override
     public Menu get(int id) {
-        return crudMenuRepository.findById(id);
+        return crudMenuRepository.findById(id).orElse(null);
     }
 
     @Override

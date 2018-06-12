@@ -7,6 +7,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.graduation.model.Restoran;
 
+import java.util.List;
+import java.util.Optional;
+
+@Transactional(readOnly = true)
 public interface CrudRestoranRepository extends JpaRepository<Restoran, Integer> {
 
     @Transactional
@@ -17,4 +21,9 @@ public interface CrudRestoranRepository extends JpaRepository<Restoran, Integer>
     Restoran save(Restoran restoran);
 
     Restoran findByName(String name);
+
+    Optional<Restoran> findById(Integer id);
+
+    @Transactional
+    List<Restoran> findAll();
 }

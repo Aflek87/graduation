@@ -14,8 +14,8 @@ import java.util.Map;
 @Table
 public class Menu extends AbstractBaseEntity{
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "restoran", nullable = false, insertable=false, updatable=false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restoran", nullable = false)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @NotNull
     private Restoran restoran;
@@ -33,9 +33,8 @@ public class Menu extends AbstractBaseEntity{
 
     }
 
-    public Menu(Integer id, Restoran restoran, LocalDate operdate, Map<String, String> delishes) {
+    public Menu(Integer id,  LocalDate operdate, Map<String, String> delishes) {
         super(id);
-        this.restoran = restoran;
         this.operdate = operdate;
         this.delishes = delishes;
     }

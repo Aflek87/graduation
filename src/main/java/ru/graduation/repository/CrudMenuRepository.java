@@ -9,6 +9,7 @@ import ru.graduation.model.Menu;
 
 import java.util.List;
 
+@Transactional(readOnly = true)
 public interface CrudMenuRepository extends JpaRepository<Menu, Integer> {
 
     @Transactional
@@ -16,12 +17,9 @@ public interface CrudMenuRepository extends JpaRepository<Menu, Integer> {
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Menu u WHERE u.id=:id")
+    @Query("DELETE FROM Menu m WHERE m.id=:id")
     int delete(@Param("id") int id);
 
-    // null if Menu do not belong to userId
-    Menu findById(int id);
-
-    // ORDERED dateTime desc
+    @Transactional
     List<Menu> findAll();
 }

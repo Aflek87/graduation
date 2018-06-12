@@ -11,6 +11,7 @@ import ru.graduation.model.User;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional(readOnly = true)
 public interface CrudUserRepository extends JpaRepository<User, Integer> {
 
     @Transactional

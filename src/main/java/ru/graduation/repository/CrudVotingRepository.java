@@ -14,8 +14,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+@Transactional(readOnly = true)
 public interface CrudVotingRepository extends JpaRepository<Voting, Integer>{
-
+    @Override
+    @Transactional
     Voting save(Voting voting);
 
     @Transactional
