@@ -10,26 +10,32 @@ import java.util.List;
 public class MenuRepositoryImpl implements MenuRepository {
 
     @Autowired
-    private CrudMenuRepository crudMenuRepository;
+    private CrudMenuRepository crudRepository;
+    @Autowired
+    private CrudRestoranRepository crudRestoranRepository;
 
     @Transactional
     @Override
-    public Menu save(Menu menu) {
-        return crudMenuRepository.save(menu);
+    public Menu save(Menu menu, int restotanId) {
+        if (!menu.isNew() && get(menu.getId()) == null) {
+            return null;
+        }
+        menu.setRestoran(crudRestoranRepository.getOne(restotanId));
+        return crudRepository.save(menu);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return crudRepository.delete(id) != 0;
     }
 
     @Override
     public Menu get(int id) {
-        return crudMenuRepository.findById(id).orElse(null);
+        return crudRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<Menu> getAll() {
-        return crudMenuRepository.findAll();
+        return crudRepository.findAll();
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MenuRepository {
     // null if updated Menu do not belong to userId
-    Menu save(Menu Menu);
+    Menu save(Menu Menu, int restotanId);
 
     // false if Menu do not belong to userId
     boolean delete(int id);

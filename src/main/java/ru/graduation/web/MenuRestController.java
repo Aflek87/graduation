@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.graduation.model.Menu;
 import ru.graduation.repository.MenuRepository;
+import ru.graduation.to.MenuTo;
 
 import java.net.URI;
 import java.util.List;
@@ -38,12 +39,13 @@ public class MenuRestController{
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@RequestBody Menu menu, @PathVariable("id") int id) {
-        repository.save(menu);
+        repository.save(menu, menu.getRestoran().getId());
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Menu> create(@RequestBody Menu menu) {
-        Menu created = repository.save(menu);
+    public ResponseEntity<Menu> create(@RequestBody MenuTo menuTo) {
+
+        Menu created = repository.save(menuTo.castToMenu(), menuTo.getRestoranId());
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
